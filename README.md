@@ -11,6 +11,7 @@ Python(3.8)
   - NumPy
 
 ## Can be installed using single line command:
-'''<python>
+<python>
   pip install -r requirements.txt
-  '''
+</python>
+ 
