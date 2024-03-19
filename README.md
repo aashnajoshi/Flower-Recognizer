@@ -9,3 +9,8 @@ Python(3.8)
   - Keras
   - Pillow
   - NumPy
+
+## Can be installed using single line command:
+'''<python>
+  pip install -r requirements.txt
+  '''
