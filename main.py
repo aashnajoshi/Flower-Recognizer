@@ -3,6 +3,12 @@
 from keras.models import load_model
 from PIL import Image, ImageOps
 import numpy as np
+from tkinter import filedialog
+import tkinter as tk
+
+# Create a Tkinter root window
+root = tk.Tk()
+root.withdraw()
 
 # Disable scientific notation for clarity
 np.set_printoptions(suppress=True)
@@ -11,13 +17,11 @@ np.set_printoptions(suppress=True)
 model = load_model("Analyzer.h5", compile=False)
 class_names = open("labels.txt", "r").readlines()
 
-# Create the array of the right shape to feed into the keras model
-# The 'length' or number of images you can put into the array is
-# determined by the first position in the shape tuple, in this case 1
+# Create the array to feed into the keras model where the 'length' or number of images you can put into the array is determined by the first position in the shape tuple.
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
-# Replace this with the path to your image
-path=input("Enter the path where the file is stored: ")
+# Open a file dialog for the user to select a file
+path = filedialog.askopenfilename(title="Select Image File")
 image = Image.open(path).convert("RGB")
 
 # resizing the image to be at least 224x224 and then cropping from the center

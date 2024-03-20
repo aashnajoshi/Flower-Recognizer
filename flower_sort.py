@@ -3,6 +3,8 @@ import os
 import shutil
 import concurrent.futures
 from pathlib import Path
+import tkinter as tk
+from tkinter import filedialog
 
 def is_image_clear(image_path, threshold=100):
     image = cv2.imread(str(image_path))
@@ -47,7 +49,13 @@ def main():
     print("2. Rename all files")
     
     operation = input("Enter your choice (1 or 2): ")
-    folder_path = input("Enter the path to the folder containing images: ")
+
+    # Create a Tkinter root window
+    root = tk.Tk()
+    root.withdraw()
+
+    # Open a file dialog for the user to select a folder
+    folder_path = filedialog.askdirectory(title="Select Folder Containing Images")
 
     if not os.path.exists(folder_path):
         print("Invalid folder path.")
@@ -56,10 +64,25 @@ def main():
     if operation == "1":
         num_images = int(input("Enter the number of clear images with single flowers you want to select: "))
         clear_images = select_clear_images(folder_path, num_images)
-        output_folder = input("Enter the path to the output folder to save clear images: ")
+        
+        # Prompt the user for saving options
+        print("Select where to save the clear images:")
+        print("1. Save in a new folder in the same location")
+        print("2. Select a different output folder")
 
-        if not os.path.exists(output_folder):
-            os.makedirs(output_folder)
+        save_option = input("Enter your choice (1 or 2): ")
+
+        if save_option == "1":
+            output_folder = os.path.join(folder_path, "clear_images")
+            if not os.path.exists(output_folder):
+                os.makedirs(output_folder)
+        elif save_option == "2":
+            output_folder = filedialog.askdirectory(title="Select Output Folder to Save Clear Images")
+            if not os.path.exists(output_folder):
+                os.makedirs(output_folder)
+        else:
+            print("Invalid choice.")
+            return
         
         for image_path in clear_images:
             shutil.copy(str(image_path), output_folder)
