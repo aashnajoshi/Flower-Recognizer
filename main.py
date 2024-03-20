@@ -5,6 +5,8 @@ from PIL import Image, ImageOps
 import numpy as np
 from tkinter import filedialog
 import tkinter as tk
+import time
+import os
 
 # Create a Tkinter root window
 root = tk.Tk()
@@ -19,6 +21,12 @@ class_names = open("labels.txt", "r").readlines()
 
 # Create the array to feed into the keras model where the 'length' or number of images you can put into the array is determined by the first position in the shape tuple.
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+
+os.system('cls')
+
+print("Hello, I am an Flower Classifier, currently i know only 3 flowers; Rose, Sunflower and Tulip, you can send me any image of these 3 flowers and i will try to detect them accurately!!")
+
+time.sleep(5)
 
 # Open a file dialog for the user to select a file
 path = filedialog.askopenfilename(title="Select Image File")
