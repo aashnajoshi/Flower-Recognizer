@@ -6,14 +6,20 @@ A deep learning model designed to classify flowers such as Rose, Sunflower, and 
 - Batch categorization of high-quality images for improved model performance.
 
 ## Usage
-### Install required libraries:
+### All required libraries can be installed using a single-line command:
 ```bash
 pip install -r requirements.txt
 ```
 
 ### While to run the code:
+#### Console-based version:
 ```bash
 python main.py
+```
+
+#### Streamlit-based version:
+```bash
+streamlit run app.py
 ```
 
 ## Description of various files:
