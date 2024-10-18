@@ -47,14 +47,10 @@ def main():
     print("Select an operation:")
     print("1. Select clear images with single flowers")
     print("2. Rename all files")
-    
     operation = input("Enter your choice (1 or 2): ")
 
-    # Create a Tkinter root window
     root = tk.Tk()
     root.withdraw()
-
-    # Open a file dialog for the user to select a folder
     folder_path = filedialog.askdirectory(title="Select Folder Containing Images")
 
     if not os.path.exists(folder_path):
@@ -69,13 +65,13 @@ def main():
         print("Select where to save the clear images:")
         print("1. Save in a new folder in the same location")
         print("2. Select a different output folder")
-
         save_option = input("Enter your choice (1 or 2): ")
 
         if save_option == "1":
             output_folder = os.path.join(folder_path, "clear_images")
             if not os.path.exists(output_folder):
                 os.makedirs(output_folder)
+
         elif save_option == "2":
             output_folder = filedialog.askdirectory(title="Select Output Folder to Save Clear Images")
             if not os.path.exists(output_folder):
@@ -83,7 +79,6 @@ def main():
         else:
             print("Invalid choice.")
             return
-        
         for image_path in clear_images:
             shutil.copy(str(image_path), output_folder)
         
