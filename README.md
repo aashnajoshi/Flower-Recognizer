@@ -1,5 +1,5 @@
-# Flower-Recognizer
-A deep learning model designed to classify flowers such as Rose, Sunflower, and Tulip using image inputs.
+# Florance
+Florance is an intelligent deep learning tool that accurately classifies flowers—such as Rose, Sunflower, and Tulip—directly from images. It supports both real-time and batch predictions via a user-friendly console and Streamlit interfaces, enabling seamless and efficient flower identification for hobbyists and researchers alike.
 
 ## Features
 - Flower classification from user-provided images.
